@@ -44,6 +44,8 @@
         "bootstrap": "^4.5.3",
         "chart.js": "^2.9.4",
         "laravel-mix-tailwind": "^0.1.0",
+        "react-alert": "^7.0.2",
+        "react-alert-template-basic": "^1.0.0",
         "react-autosuggest": "^10.1.0",
         "react-bootstrap": "^1.4.0",
         "react-dropdown": "^1.9.1",

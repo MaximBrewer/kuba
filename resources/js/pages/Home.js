@@ -1,7 +1,10 @@
 import React, { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import LogoImage from "../../images/logo.png";
 import FooterLogoImage from "../../images/logo-black.png";
 import EurikaImage from "../../images/eurika.png";
+import MoonImage from "../../images/moon.png";
+import RocketImage from "../../images/rocket.gif";
 import StarImage from "../../images/star.png";
 import EllipseImage from "../../images/ellipse.png";
 import MobileImage from "../../images/mobile.png";
@@ -25,9 +28,9 @@ import SeverstalBrand from "../../images/brands/severstal.png";
 import OrderFrom from "../components/Order";
 import MiniForm from "../components/Mini";
 
-import { ArrowDown } from "../Icons";
+import { ArrowDown, InstagramLogo } from "../Icons";
 import {
-    Link,
+    Link as ScrollLink,
     DirectLink,
     Element,
     Events,
@@ -61,10 +64,11 @@ function Home() {
             <section id="header">
                 <div className="container mx-auto">
                     <div className="flex pt-12">
-                        <div
-                            className="logo bg-center bg-no-repeat bg-contain w-24 h-24"
+                        <Link
+                            to="/"
+                            className="block logo bg-center bg-no-repeat bg-contain w-24 h-24"
                             style={{ backgroundImage: `url(${LogoImage})` }}
-                        ></div>
+                        ></Link>
                         <div className="flex-grow flex justify-center">
                             <ul className="flex items-start">
                                 <li
@@ -74,7 +78,7 @@ function Home() {
                                             : `border-transparent`
                                     }`}
                                 >
-                                    <Link
+                                    <ScrollLink
                                         activeClass="active"
                                         to="home"
                                         spy={true}
@@ -85,7 +89,7 @@ function Home() {
                                         }}
                                     >
                                         Главная
-                                    </Link>
+                                    </ScrollLink>
                                 </li>
                                 <li
                                     className={`w-20 text-center mx-6 text-white cursor-pointer border-b-2 border-opacity-20 ${
@@ -94,7 +98,7 @@ function Home() {
                                             : `border-transparent`
                                     }`}
                                 >
-                                    <Link
+                                    <ScrollLink
                                         activeClass="active"
                                         to="services"
                                         spy={true}
@@ -105,7 +109,7 @@ function Home() {
                                         }}
                                     >
                                         Услуги
-                                    </Link>
+                                    </ScrollLink>
                                 </li>
                                 <li
                                     className={`w-20 text-center mx-6 text-white cursor-pointer border-b-2 border-opacity-20 ${
@@ -114,7 +118,7 @@ function Home() {
                                             : `border-transparent`
                                     }`}
                                 >
-                                    <Link
+                                    <ScrollLink
                                         activeClass="active"
                                         to="clients"
                                         spy={true}
@@ -125,7 +129,7 @@ function Home() {
                                         }}
                                     >
                                         Клиенты
-                                    </Link>
+                                    </ScrollLink>
                                 </li>
                                 <li
                                     className={`w-20 text-center mx-6 text-white cursor-pointer border-b-2 border-opacity-20 ${
@@ -134,7 +138,7 @@ function Home() {
                                             : `border-transparent`
                                     }`}
                                 >
-                                    <Link
+                                    <ScrollLink
                                         activeClass="active"
                                         to="contacts"
                                         spy={true}
@@ -145,7 +149,7 @@ function Home() {
                                         }}
                                     >
                                         Контакты
-                                    </Link>
+                                    </ScrollLink>
                                 </li>
                             </ul>
                         </div>
@@ -156,7 +160,7 @@ function Home() {
                 <div className="container mx-auto">
                     <div className="flex">
                         <div className="flex flex-col justify-end items-start w-1/2">
-                            <h1 className="text-6xl font-bold mb-10 text-orange-500">
+                            <h1 className="text-6xl font-bold mb-10 text-orange-500 mt-36 font-druk">
                                 kuba. digital.
                                 <br />
                                 influens.
@@ -169,19 +173,22 @@ function Home() {
                                 его на все 100%
                             </h3>
                             <div className="flex justify-start mb-14">
-                                <Link
+                                <ScrollLink
                                     activeClass="active"
-                                    className="flex items-center justify-center cursor-pointer text-sm w-44 h-10 bg-orange-500 mr-4 hover:bg-orange-600"
+                                    className="flex items-center justify-center cursor-pointer font-sans font-semibold text-sm w-44 h-10 bg-orange-500 mr-4 hover:bg-orange-600"
                                     to="order"
                                     spy={true}
                                     smooth={true}
                                     duration={500}
                                 >
                                     Оставить заявку
-                                </Link>
-                                <button className="text-sm w-44 h-10 bg-white hover:bg-gray-100">
+                                </ScrollLink>
+                                <Link
+                                    to="/brief"
+                                    className="flex items-center font-sans font-semibold justify-center  text-sm w-44 h-10 bg-white hover:bg-gray-100"
+                                >
                                     Заполнить бриф
-                                </button>
+                                </Link>
                             </div>
                             <div>
                                 <a onClick={() => {}} className="flex mb-10">
@@ -191,13 +198,12 @@ function Home() {
                                 </a>
                             </div>
                         </div>
-                        <div className="flex items-center justify-center">
-                            <img
-                                src={EurikaImage}
-                                alt=""
-                                style={{ maxHeight: "727px" }}
-                            />
-                        </div>
+                        <div
+                            className="flex items-center justify-center relative w-1/2 rocket-banner"
+                            style={{
+                                background: `url(${EurikaImage}) no-repeat center center/contain, url(${RocketImage}) no-repeat left -10% center/50%, url(${MoonImage}) no-repeat top 10% right/25%`
+                            }}
+                        ></div>
                     </div>
                 </div>
             </section>
@@ -213,14 +219,12 @@ function Home() {
                         — наши УСЛУГИ
                     </h4>
                     <div className="grid grid-cols-3 gap-16">
-                        <div className="pt-64">
+                        <div className="group pt-64 transform-gpu hover:scale-110 cursor-pointer">
                             <div
                                 style={{
-                                    background: "rgba(161, 56, 244, 0.5)",
-                                    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.1)",
-                                    borderRadius: "30px"
+                                    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.1)"
                                 }}
-                                className="py-28 px-14 y-6 px-4 flex items-center justify-center"
+                                className="rounded-3xl py-28 px-14 y-6 px-4 flex items-center justify-center bg-purple-700 bg-opacity-50 group-hover:bg-orange-500 group-hover:bg-opacity-100 group-hover:z-10"
                             >
                                 <div
                                     className="relative bg-center bg-no-repeat bg-contain w-full"
@@ -252,14 +256,12 @@ function Home() {
                                 </li>
                             </ul>
                         </div>
-                        <div className="">
+                        <div className="group transform-gpu hover:scale-110 cursor-pointer">
                             <div
                                 style={{
-                                    background: "rgba(161, 56, 244, 0.5)",
-                                    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.1)",
-                                    borderRadius: "30px"
+                                    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.1)"
                                 }}
-                                className="py-32 px-16 py-6 px-4 flex items-center justify-center"
+                                className="rounded-3xl py-28 px-14 y-6 px-4 flex items-center justify-center bg-purple-700 bg-opacity-50 group-hover:bg-orange-500 group-hover:bg-opacity-100 group-hover:z-10"
                             >
                                 <div
                                     className="relative bg-center bg-no-repeat bg-contain w-full"
@@ -295,14 +297,12 @@ function Home() {
                                 </li>
                             </ul>
                         </div>
-                        <div className="pt-64">
+                        <div className="group pt-64 transform-gpu hover:scale-110 cursor-pointer">
                             <div
                                 style={{
-                                    background: "rgba(161, 56, 244, 0.5)",
-                                    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.1)",
-                                    borderRadius: "30px"
+                                    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.1)"
                                 }}
-                                className="py-32 pl-20 pr-16 flex items-center justify-center"
+                                className="rounded-3xl py-28 px-14 y-6 px-4 flex items-center justify-center bg-purple-700 bg-opacity-50 group-hover:bg-orange-500 group-hover:bg-opacity-100 group-hover:z-10"
                             >
                                 <div
                                     className="relative bg-center bg-no-repeat bg-contain w-full"
@@ -380,16 +380,16 @@ function Home() {
                                         вдохновляет с первого взгляда и
                                         неизменно привлекает внимание к бренду.
                                     </p>
-                                    <Link
+                                    <ScrollLink
                                         activeClass="active"
-                                        className="flex items-center justify-center cursor-pointer text-sm w-44 h-10 bg-orange-500 mr-4 hover:bg-orange-600"
+                                        className="flex items-center font-sans font-semibold justify-center cursor-pointer text-sm w-44 h-10 bg-orange-500 mr-4 hover:bg-orange-600"
                                         to="order"
                                         spy={true}
                                         smooth={true}
                                         duration={500}
                                     >
                                         Оставить заявку
-                                    </Link>
+                                    </ScrollLink>
                                 </div>
                             </div>
                         </div>
@@ -411,16 +411,16 @@ function Home() {
                                         или высоконагруженная интерактивная
                                         платформа.
                                     </p>
-                                    <Link
+                                    <ScrollLink
                                         activeClass="active"
-                                        className="flex items-center justify-center cursor-pointer text-sm w-44 h-10 bg-white hover:bg-gray-100"
+                                        className="flex items-center font-sans font-semibold justify-center cursor-pointer text-sm w-44 h-10 bg-white hover:bg-gray-100"
                                         to="order"
                                         spy={true}
                                         smooth={true}
                                         duration={500}
                                     >
                                         Оставить заявку
-                                    </Link>
+                                    </ScrollLink>
                                 </div>
                             </div>
                             <div className="w-1/2">
@@ -463,16 +463,16 @@ function Home() {
                                         отличного результата в сотрудничестве с
                                         популярными блогерами.
                                     </p>
-                                    <Link
+                                    <ScrollLink
                                         activeClass="active"
-                                        className="flex items-center justify-center cursor-pointer text-sm w-44 h-10 bg-orange-500 mb-6 hover:bg-orange-600"
+                                        className="flex items-center font-sans font-semibold justify-center cursor-pointer text-sm w-44 h-10 bg-orange-500 mb-6 hover:bg-orange-600"
                                         to="order"
                                         spy={true}
                                         smooth={true}
                                         duration={500}
                                     >
                                         Оставить заявку
-                                    </Link>
+                                    </ScrollLink>
                                 </div>
                             </div>
                         </div>
@@ -546,9 +546,12 @@ function Home() {
                             <h4 className="text-3xl text-white mb-8">
                                 Или заполните бриф самостоятельно!
                             </h4>
-                            <button className="mb-16 flex items-center justify-center cursor-pointer text-sm w-44 h-10 bg-white hover:bg-gray-100">
+                            <Link
+                                to="/brief"
+                                className="flex items-center font-sans font-semibold justify-center  mb-16 flex items-center justify-center cursor-pointer text-sm w-44 h-10 bg-white hover:bg-gray-100"
+                            >
                                 Заполнить бриф
-                            </button>
+                            </Link>
                         </div>
                         <div className="w-1/2 flex items-end justify-center">
                             <img
@@ -573,12 +576,13 @@ function Home() {
                 <div className="container mx-auto">
                     <div className="flex justify-between">
                         <div className="pr-24">
-                            <div
-                                className="mb-6 bg-center bg-no-repeat bg-contain w-14 h-14"
+                            <Link
+                                to="/"
+                                className="block mb-6 bg-center bg-no-repeat bg-contain w-14 h-14"
                                 style={{
                                     backgroundImage: `url(${FooterLogoImage})`
                                 }}
-                            ></div>
+                            ></Link>
                             <p className="text-sm text-gray-700">
                                 All rights reserved.
                                 <br />© 2021 kuba.digital{" "}
@@ -588,21 +592,37 @@ function Home() {
                             <h4 className="text-lg font-semibold mb-6">
                                 Как с вами связаться?
                             </h4>
-                            <dl className="flex text-sm mb-3">
+                            {/* <dl className="flex text-sm mb-3">
                                 <dt>Phone:</dt>
                                 <dd></dd>
-                            </dl>
+                            </dl> */}
                             <dl className="flex text-sm mb-3">
-                                <dt>Email:</dt>
-                                <dd></dd>
+                                <dt className="whitespace-nowrap mr-2">
+                                    Email:
+                                </dt>
+                                <dd className="whitespace-nowrap">
+                                    <a
+                                        className="text-yellow-900 hover:underline"
+                                        href="mailto:hello@kuba.digital"
+                                    >
+                                        hello@kuba.digital
+                                    </a>
+                                </dd>
                             </dl>
-                            <dl className="flex text-sm mb-3">
+                            {/* <dl className="flex text-sm mb-3">
                                 <dt>Telegram:</dt>
                                 <dd></dd>
-                            </dl>
+                            </dl> */}
                             <dl className="flex text-sm mb-3">
-                                <dt>Social media:</dt>
-                                <dd></dd>
+                                <dd className="whitespace-nowrap">
+                                    {" "}
+                                    <a
+                                        className="text-yellow-900 hover:underline"
+                                        href="https://instagram.com/kuba.digital?igshid=hjubezg39pb7"
+                                    >
+                                        <InstagramLogo className="w-12 h-12" />
+                                    </a>
+                                </dd>
                             </dl>
                         </div>
                         <div className="pr-24 w-2/5">

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import useInputValue from "../components/input-value";
 import client from "../api/client";
+import { useAlert } from 'react-alert'
 
 // components
 
 export default function Order() {
+    const alert = useAlert()
     let name = useInputValue("name");
     let email = useInputValue("email");
     let phone = useInputValue("phone");
@@ -14,6 +16,8 @@ export default function Order() {
 
     const handleSubmit = e => {
         e.preventDefault();
+
+        alert.show('Мы получили Ваше сообщение, до скорейшей обратной связи!')
 
         client("/api/order", {
             body: {

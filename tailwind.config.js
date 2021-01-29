@@ -1,6 +1,45 @@
 const colors = require("tailwindcss/colors");
 module.exports = {
     theme: {
+        fontFamily: {
+            sans: [
+                "ui-sans-serif",
+                "system-ui",
+                "-apple-system",
+                "BlinkMacSystemFont",
+                "Segoe UI",
+                "Roboto",
+                "Helvetica Neue",
+                "Arial",
+                "Noto Sans",
+                "sans-serif",
+                "Apple Color Emoji",
+                "Segoe UI Emoji",
+                "Segoe UI Symbol",
+                "Noto Color Emoji"
+            ],
+            serif: [
+                "ui-serif",
+                "Georgia",
+                "Cambria",
+                "Times New Roman",
+                "Times",
+                "serif"
+            ],
+            mono: [
+                "ui-monospace",
+                "SFMono-Regular",
+                "Menlo",
+                "Monaco",
+                "Consolas",
+                "Liberation Mono",
+                "Courier New",
+                "monospace"
+            ],
+            body: ["Montserrat", "sans-serif"],
+            monserrat: ["Montserrat", "sans-serif"],
+            druk: ["druk_text_widebold"]
+        },
         screens: {
             sm: "640px",
             md: "768px",
@@ -34,6 +73,18 @@ module.exports = {
                 700: "#ffa34d",
                 800: "#ff9633",
                 900: "#ff7b00"
+            },
+            purple: {
+                50: "#ab49f5",
+                100: "#ab49f5",
+                200: "#ab49f5",
+                300: "#ab49f5",
+                400: "#ab49f5",
+                500: "#ab49f5",
+                600: "#ab49f5",
+                700: "#a031f5",
+                800: "#9518f5",
+                900: "#8b00f5"
             }
         }
     },
