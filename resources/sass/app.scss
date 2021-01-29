@@ -1,0 +1,102 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+body {
+    background: linear-gradient(180deg, #7438f4 0%, #a138f4 100%);
+}
+
+input:invalid {
+    box-shadow: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.overlay {
+    position: relative;
+}
+
+/* 1024 -1 so it doesnt show when it hits 1024px */
+@media only screen and (max-width: 1023px) {
+    .overlay:after {
+        content: " ";
+        z-index: 29;
+        display: block;
+        height: 100%;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.5);
+        pointer-events: none;
+        position: fixed;
+    }
+}
+
+.md-input-box {
+    position: relative;
+}
+.md-input {
+    @apply w-full;
+    width: 100%;
+    outline: none;
+}
+.md-label {
+    @apply absolute pointer-events-none block;
+    display: block;
+    pointer-events: none;
+    transform-origin: top left;
+    transform: translate(0, 0) scale(1);
+    transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
+        transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    top: 50%;
+    margin-top: -12px;
+}
+.md-input:focus ~ .md-input-underline:after,
+.react-select-container ~ .md-input-underline:after {
+    transform: scaleX(1);
+}
+.md-input:focus + .md-label,
+.md-input:not(:placeholder-shown) + .md-label,
+.react-select-container + .md-label {
+    --tw-text-opacity: 1;
+    transform: translate(0, -25px) scale(0.95);
+    transform-origin: top left;
+}
+
+input[type="radio"] + label span {
+    transition: background 0.2s, transform 0.2s;
+}
+
+input[type="radio"] + label span:hover,
+input[type="radio"] + label:hover span {
+    transform: scale(1.2);
+}
+
+input[type="radio"]:checked + label span {
+    background-color: rgba(5, 150, 105);
+    box-shadow: 0px 0px 0px 2px white inset;
+}
+
+input[type="radio"]:checked + label {
+}
+
+input[type="radio"] + label span {
+    transition: background 0.2s, transform 0.2s;
+}
+
+input[type="checkbox"] + label span:hover,
+input[type="checkbox"] + label:hover span {
+    transform: scale(1.2);
+}
+
+input[type="checkbox"]:checked + label span {
+    background-color: rgba(5, 150, 105);
+    box-shadow: 0px 0px 0px 2px white inset;
+}
+
+input[type="checkbox"]:checked + label {
+}
