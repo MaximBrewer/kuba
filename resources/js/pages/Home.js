@@ -564,7 +564,7 @@ function Home() {
                 src={EllipseImage}
                 className="absolute"
                 alt=""
-                style={{ zIndex: "-1" }}
+                style={{ zIndex: "-1", right: "-100px", bottom: "-100px" }}
             />
             <section id="contacts" ref={contactsRef}>
                 <div className="container mx-auto"></div>
