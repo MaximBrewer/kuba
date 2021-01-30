@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import LogoImage from "../../images/logo.png";
-import FooterLogoImage from "../../images/logo-black.png";
 import EurikaImage from "../../images/eurika.png";
 import MoonImage from "../../images/moon.png";
 import RocketImage from "../../images/rocket.gif";
@@ -26,17 +25,11 @@ import RaffaelloBrand from "../../images/brands/raffaelo.png";
 import SeverstalBrand from "../../images/brands/severstal.png";
 
 import OrderFrom from "../components/Order";
-import MiniForm from "../components/Mini";
+import Footer from "../components/Footer"
 
-import { ArrowDown, InstagramLogo } from "../Icons";
+import { ArrowDown } from "../Icons";
 import {
     Link as ScrollLink,
-    DirectLink,
-    Element,
-    Events,
-    animateScroll as scroll,
-    scrollSpy,
-    scroller
 } from "react-scroll";
 
 function Home() {
@@ -60,19 +53,19 @@ function Home() {
     );
 
     return (
-        <div className="overflow-hidden relative">
+        <div className="overflow-hidden relative flex flex-col min-h-screen">
             <section id="header">
                 <div className="container mx-auto">
                     <div className="flex pt-12">
                         <Link
                             to="/"
-                            className="block logo bg-center bg-no-repeat bg-contain w-24 h-24"
+                            className="transform-gpu transition-transform hover:scale-110 block logo bg-center bg-no-repeat bg-contain w-24 h-24"
                             style={{ backgroundImage: `url(${LogoImage})` }}
                         ></Link>
                         <div className="flex-grow flex justify-center">
                             <ul className="flex items-start">
                                 <li
-                                    className={`w-20 text-center mx-6 text-white cursor-pointer border-b-2 border-opacity-20 ${
+                                    className={`transform-gpu transition-transform hover:scale-125 w-20 text-center mx-6 text-white cursor-pointer border-b-2 border-opacity-20 ${
                                         active == "home"
                                             ? `font-bold border-black`
                                             : `border-transparent`
@@ -92,7 +85,7 @@ function Home() {
                                     </ScrollLink>
                                 </li>
                                 <li
-                                    className={`w-20 text-center mx-6 text-white cursor-pointer border-b-2 border-opacity-20 ${
+                                    className={`transform-gpu transition-transform hover:scale-125 w-20 text-center mx-6 text-white cursor-pointer border-b-2 border-opacity-20 ${
                                         active == "services"
                                             ? `font-bold border-black`
                                             : `border-transparent`
@@ -112,7 +105,7 @@ function Home() {
                                     </ScrollLink>
                                 </li>
                                 <li
-                                    className={`w-20 text-center mx-6 text-white cursor-pointer border-b-2 border-opacity-20 ${
+                                    className={`transform-gpu transition-transform hover:scale-125 w-20 text-center mx-6 text-white cursor-pointer border-b-2 border-opacity-20 ${
                                         active == "clients"
                                             ? `font-bold border-black`
                                             : `border-transparent`
@@ -132,7 +125,7 @@ function Home() {
                                     </ScrollLink>
                                 </li>
                                 <li
-                                    className={`w-20 text-center mx-6 text-white cursor-pointer border-b-2 border-opacity-20 ${
+                                    className={`transform-gpu transition-transform hover:scale-125 w-20 text-center mx-6 text-white cursor-pointer border-b-2 border-opacity-20 ${
                                         active == "contacts"
                                             ? `font-bold border-black`
                                             : `border-transparent`
@@ -175,7 +168,7 @@ function Home() {
                             <div className="flex justify-start mb-14">
                                 <ScrollLink
                                     activeClass="active"
-                                    className="flex items-center justify-center cursor-pointer font-sans font-semibold text-sm w-44 h-10 bg-orange-500 mr-4 hover:bg-orange-600"
+                                    className=" transform-gpu transition-transform hover:scale-110 flex items-center justify-center cursor-pointer font-sans font-semibold text-sm w-44 h-10 bg-orange-500 mr-4 hover:bg-orange-600"
                                     to="order"
                                     spy={true}
                                     smooth={true}
@@ -185,7 +178,7 @@ function Home() {
                                 </ScrollLink>
                                 <Link
                                     to="/brief"
-                                    className="flex items-center font-sans font-semibold justify-center  text-sm w-44 h-10 bg-white hover:bg-gray-100"
+                                    className=" transform-gpu transition-transform hover:scale-110 flex items-center font-sans font-semibold justify-center  text-sm w-44 h-10 bg-white hover:bg-gray-100"
                                 >
                                     Заполнить бриф
                                 </Link>
@@ -219,7 +212,7 @@ function Home() {
                         — наши УСЛУГИ
                     </h4>
                     <div className="grid grid-cols-3 gap-16">
-                        <div className="group pt-64 transform-gpu hover:scale-110 cursor-pointer">
+                        <div className="group pt-64 transform-gpu transition-transform hover:scale-110 cursor-pointer">
                             <div
                                 style={{
                                     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.1)"
@@ -256,7 +249,7 @@ function Home() {
                                 </li>
                             </ul>
                         </div>
-                        <div className="group transform-gpu hover:scale-110 cursor-pointer">
+                        <div className="group transform-gpu transition-transform hover:scale-110 cursor-pointer">
                             <div
                                 style={{
                                     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.1)"
@@ -297,7 +290,7 @@ function Home() {
                                 </li>
                             </ul>
                         </div>
-                        <div className="group pt-64 transform-gpu hover:scale-110 cursor-pointer">
+                        <div className="group pt-64 transform-gpu transition-transform hover:scale-110 cursor-pointer">
                             <div
                                 style={{
                                     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.1)"
@@ -382,7 +375,7 @@ function Home() {
                                     </p>
                                     <ScrollLink
                                         activeClass="active"
-                                        className="flex items-center font-sans font-semibold justify-center cursor-pointer text-sm w-44 h-10 bg-orange-500 mr-4 hover:bg-orange-600"
+                                        className="transform-gpu transition-transform hover:scale-110 flex items-center font-sans font-semibold justify-center cursor-pointer text-sm w-44 h-10 bg-orange-500 mr-4 hover:bg-orange-600"
                                         to="order"
                                         spy={true}
                                         smooth={true}
@@ -413,7 +406,7 @@ function Home() {
                                     </p>
                                     <ScrollLink
                                         activeClass="active"
-                                        className="flex items-center font-sans font-semibold justify-center cursor-pointer text-sm w-44 h-10 bg-white hover:bg-gray-100"
+                                        className=" transform-gpu transition-transform hover:scale-110 flex items-center font-sans font-semibold justify-center cursor-pointer text-sm w-44 h-10 bg-white hover:bg-gray-100"
                                         to="order"
                                         spy={true}
                                         smooth={true}
@@ -465,7 +458,7 @@ function Home() {
                                     </p>
                                     <ScrollLink
                                         activeClass="active"
-                                        className="flex items-center font-sans font-semibold justify-center cursor-pointer text-sm w-44 h-10 bg-orange-500 mb-6 hover:bg-orange-600"
+                                        className=" transform-gpu transition-transform hover:scale-110 flex items-center font-sans font-semibold justify-center cursor-pointer text-sm w-44 h-10 bg-orange-500 mb-6 hover:bg-orange-600"
                                         to="order"
                                         spy={true}
                                         smooth={true}
@@ -487,42 +480,42 @@ function Home() {
                     </h4>
                     <div className="grid grid-cols-4 gap-12">
                         <div className="flex items-center justo=ify-center">
-                            <a href="#" className="block px-6">
+                            <a href="#" className="transform-gpu transition-transform hover:scale-110 block px-6">
                                 <img src={RaffaelloBrand} alt="" />
                             </a>
                         </div>
                         <div className="flex items-center justo=ify-center">
-                            <a href="#" className="block px-6">
+                            <a href="#" className="transform-gpu transition-transform hover:scale-110 block px-6">
                                 <img src={PobedaBrand} alt="" />
                             </a>
                         </div>
                         <div className="flex items-center justo=ify-center">
-                            <a href="#" className="block px-6">
+                            <a href="#" className="transform-gpu transition-transform hover:scale-110 block px-6">
                                 <img src={HuggiesBrand} alt="" />
                             </a>
                         </div>
                         <div className="flex items-center justo=ify-center">
-                            <a href="#" className="block px-6">
+                            <a href="#" className="transform-gpu transition-transform hover:scale-110 block px-6">
                                 <img src={KinderBrand} alt="" />
                             </a>
                         </div>
                         <div className="flex items-center justo=ify-center">
-                            <a href="#" className="block px-6">
+                            <a href="#" className="transform-gpu transition-transform hover:scale-110 block px-6">
                                 <img src={DomikBrand} alt="" />
                             </a>
                         </div>
                         <div className="flex items-center justo=ify-center">
-                            <a href="#" className="block px-6">
+                            <a href="#" className="transform-gpu transition-transform hover:scale-110 block px-6">
                                 <img src={ImunelleBrand} alt="" />
                             </a>
                         </div>
                         <div className="flex items-center justo=ify-center">
-                            <a href="#" className="block px-6">
+                            <a href="#" className="transform-gpu transition-transform hover:scale-110 block px-6">
                                 <img src={AdrBrand} alt="" />
                             </a>
                         </div>
                         <div className="flex items-center justo=ify-center">
-                            <a href="#" className="block px-6">
+                            <a href="#" className="transform-gpu transition-transform hover:scale-110 block px-6">
                                 <img src={SeverstalBrand} alt="" />
                             </a>
                         </div>
@@ -548,7 +541,7 @@ function Home() {
                             </h4>
                             <Link
                                 to="/brief"
-                                className="flex items-center font-sans font-semibold justify-center  mb-16 flex items-center justify-center cursor-pointer text-sm w-44 h-10 bg-white hover:bg-gray-100"
+                                className=" transform-gpu transition-transform hover:scale-110 flex items-center font-sans font-semibold justify-center  mb-16 flex items-center justify-center cursor-pointer text-sm w-44 h-10 bg-white hover:bg-gray-100"
                             >
                                 Заполнить бриф
                             </Link>
@@ -572,68 +565,8 @@ function Home() {
             <section id="contacts" ref={contactsRef}>
                 <div className="container mx-auto"></div>
             </section>
-            <section id="footer" className="bg-orange-500 pt-14 pb-16">
-                <div className="container mx-auto">
-                    <div className="flex justify-between">
-                        <div className="pr-24">
-                            <Link
-                                to="/"
-                                className="block mb-6 bg-center bg-no-repeat bg-contain w-14 h-14"
-                                style={{
-                                    backgroundImage: `url(${FooterLogoImage})`
-                                }}
-                            ></Link>
-                            <p className="text-sm text-gray-700">
-                                All rights reserved.
-                                <br />© 2021 kuba.digital{" "}
-                            </p>
-                        </div>
-                        <div className="pr-24 w-2/5">
-                            <h4 className="text-lg font-semibold mb-6">
-                                Как с вами связаться?
-                            </h4>
-                            {/* <dl className="flex text-sm mb-3">
-                                <dt>Phone:</dt>
-                                <dd></dd>
-                            </dl> */}
-                            <dl className="flex text-sm mb-3">
-                                <dt className="whitespace-nowrap mr-2">
-                                    Email:
-                                </dt>
-                                <dd className="whitespace-nowrap">
-                                    <a
-                                        className="text-yellow-900 hover:underline"
-                                        href="mailto:hello@kuba.digital"
-                                    >
-                                        hello@kuba.digital
-                                    </a>
-                                </dd>
-                            </dl>
-                            {/* <dl className="flex text-sm mb-3">
-                                <dt>Telegram:</dt>
-                                <dd></dd>
-                            </dl> */}
-                            <dl className="flex text-sm mb-3">
-                                <dd className="whitespace-nowrap">
-                                    {" "}
-                                    <a
-                                        className="text-yellow-900 hover:underline"
-                                        href="https://instagram.com/kuba.digital?igshid=hjubezg39pb7"
-                                    >
-                                        <InstagramLogo className="w-12 h-12" />
-                                    </a>
-                                </dd>
-                            </dl>
-                        </div>
-                        <div className="pr-24 w-2/5">
-                            <h4 className="text-lg font-semibold mb-6">
-                                Оставайтесь на связи
-                            </h4>
-                            <MiniForm />
-                        </div>
-                    </div>
-                </div>
-            </section>
+            
+            <Footer />
         </div>
     );
 }

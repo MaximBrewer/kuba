@@ -179,7 +179,7 @@ export default function Order() {
                 <div className="py-6 w-full">
                     <div className="text-center flex justify-start">
                         <button
-                            className="flex items-center justify-center cursor-pointer text-sm w-44 h-10 bg-orange-500 mr-4 hover:bg-orange-600"
+                            className=" transform-gpu transition-transform hover:scale-110 flex items-center justify-center cursor-pointer text-sm w-44 h-10 bg-orange-500 mr-4 hover:bg-orange-600"
                             type="button"
                             onClick={handleSubmit}
                         >
