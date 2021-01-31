@@ -673,7 +673,7 @@ function Home() {
                             </h4>
                             <Link
                                 to="/brief"
-                                className=" hidden sm:block transform-gpu transition-transform hover:scale-110 flex items-center font-sans font-semibold justify-center  mb-16 flex items-center justify-center cursor-pointer text-sm w-44 h-10 bg-white hover:bg-gray-100"
+                                className=" hidden sm:flex transform-gpu transition-transform hover:scale-110 items-center font-sans font-semibold justify-center  mb-16 flex items-center justify-center cursor-pointer text-sm w-44 h-10 bg-white hover:bg-gray-100"
                             >
                                 Заполнить бриф
                             </Link>
