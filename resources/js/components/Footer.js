@@ -8,8 +8,8 @@ import { InstagramLogo } from "../Icons";
 function Footer() {
     return (
         <section id="footer" className="bg-orange-500 pt-14 pb-16">
-            <div className="container mx-auto">
-                <div className="flex justify-between">
+            <div className="container mx-auto px-4 sm:px-0">
+                <div className="flex justify-between flex-col sm:flex-row">
                     <div className="pr-24">
                         <Link
                             to="/"
@@ -18,12 +18,12 @@ function Footer() {
                                 backgroundImage: `url(${FooterLogoImage})`
                             }}
                         ></Link>
-                        <p className="text-sm text-gray-700">
+                        <p className="text-sm text-gray-700 hidden sm:block">
                             All rights reserved.
                             <br />© 2021 kuba.digital{" "}
                         </p>
                     </div>
-                    <div className="pr-24 w-2/5">
+                    <div className="pr-24 sm:w-2/5">
                         <h4 className="text-lg font-semibold mb-6">
                             Как с вами связаться?
                         </h4>
@@ -58,7 +58,7 @@ function Footer() {
                             </dd>
                         </dl>
                     </div>
-                    <div className="pr-24 w-2/5">
+                    <div className="pr-24 sm:w-2/5 hidden sm:block">
                         <h4 className="text-lg font-semibold mb-6">
                             Оставайтесь на связи
                         </h4>

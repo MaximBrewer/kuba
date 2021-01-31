@@ -1,47 +1,52 @@
 import React, { useEffect, useState } from "react";
 import useInputValue from "../components/input-value";
 import client from "../api/client";
-import { useAlert } from 'react-alert'
+import { useAlert } from "react-alert";
 
 // components
 
 export default function Order() {
-    const alert = useAlert()
+    const alert = useAlert();
     let name = useInputValue("name");
     let email = useInputValue("email");
     let phone = useInputValue("phone");
-    let message = useInputValue("message");
-
-    const [showAlert, setShowAlert] = useState(false);
+    let text = useInputValue("text");
 
     const handleSubmit = e => {
         e.preventDefault();
-
-        alert.show('Мы получили Ваше сообщение, до скорейшей обратной связи!')
 
         client("/api/order", {
             body: {
                 name: name.value ? name.value : "",
                 email: email.value ? email.value : "",
                 phone: phone.value ? phone.value : "",
-                message: message.value ? message.value : ""
+                text: text.value ? text.value : ""
             }
         })
-            .then(({ data: message }) => {
-                setShowAlert(message);
+            .then(data => {
+                alert.show(data.message, {
+                    timeout: 3000,
+                    type: "success"
+                });
+                name.setValue("");
+                email.setValue("");
+                phone.setValue("");
+                text.setValue("");
             })
             .catch(error => {
                 error.json().then(({ errors }) => {
-                    [
-                        name,
-                        email,
-                        phone,
-                        message
-                    ].forEach(({ parseServerError }) =>
+                    [name, email, phone].forEach(({ parseServerError }) =>
                         parseServerError(errors)
                     );
                 });
             });
+    };
+
+    const onTextAreaChange = (e, func) => {
+        e.target.style.height = "auto";
+        e.target.style.overflow = "hidden";
+        e.target.style.height = e.target.scrollHeight + "px";
+        func(e);
     };
 
     return (
@@ -53,7 +58,7 @@ export default function Order() {
                             <input
                                 type="text"
                                 className={`md-input bg-transparent py-2 border-b border-gray-50 text-gray-50 ${
-                                    name.error ? "border-red-500" : ""
+                                    name.error ? "border-red-200" : ""
                                 }`}
                                 placeholder=" "
                                 id="name"
@@ -63,13 +68,13 @@ export default function Order() {
                             />
                             <label
                                 htmlFor="name"
-                                className="md-label px-1 text-gray-50"
+                                className="md-label text-gray-50"
                             >
                                 Имя
                             </label>
                         </div>
                         {name.error && (
-                            <p className="text-red-500 text-xs pt-2">
+                            <p className="text-red-200 text-xs pt-2">
                                 {name.error}
                             </p>
                         )}
@@ -81,7 +86,7 @@ export default function Order() {
                             <input
                                 type="email"
                                 className={`md-input bg-transparent py-2 border-b border-gray-50 text-gray-50 ${
-                                    email.error ? "border-red-500" : ""
+                                    email.error ? "border-red-200" : ""
                                 }`}
                                 placeholder=" "
                                 id="email"
@@ -91,13 +96,13 @@ export default function Order() {
                             />
                             <label
                                 htmlFor="email"
-                                className="md-label px-1 text-gray-50"
+                                className="md-label text-gray-50"
                             >
                                 E-mail
                             </label>
                         </div>
                         {email.error && (
-                            <p className="text-red-500 text-xs pt-2">
+                            <p className="text-red-200 text-xs pt-2">
                                 {email.error}
                             </p>
                         )}
@@ -109,7 +114,7 @@ export default function Order() {
                             <input
                                 type="text"
                                 className={`md-input bg-transparent py-2 border-b border-gray-50 text-gray-50 ${
-                                    phone.error ? "border-red-500" : ""
+                                    phone.error ? "border-red-200" : ""
                                 }`}
                                 placeholder=" "
                                 id="phone"
@@ -119,63 +124,49 @@ export default function Order() {
                             />
                             <label
                                 htmlFor="phone"
-                                className="md-label px-1 text-gray-50"
+                                className="md-label text-gray-50"
                             >
                                 Телефон
                             </label>
                         </div>
                         {phone.error && (
-                            <p className="text-red-500 text-xs pt-2">
+                            <p className="text-red-200 text-xs pt-2">
                                 {phone.error}
                             </p>
                         )}
                     </div>
                 </div>
                 <div className="flex flex-wrap flex-col">
-                    <div className="md-input-main w-full lg:w-12/12 my-5">
+                    <div className="md-input-main w-full lg:w-12/12 my-5 mt-6">
                         <div className={`md-input-box`}>
-                            <input
+                            <textarea
                                 type="text"
                                 className={`md-input bg-transparent py-2 border-b border-gray-50 text-gray-50 ${
-                                    message.error ? "border-red-500" : ""
+                                    text.error ? "border-red-200" : ""
                                 }`}
                                 placeholder=" "
-                                id="message"
-                                name="message"
+                                id="text"
+                                name="text"
                                 required
-                                {...message.bind}
+                                value={text.bind.value}
+                                onChange={e => {
+                                    onTextAreaChange(e, text.bind.onChange);
+                                }}
                             />
                             <label
-                                htmlFor="message"
-                                className="md-label px-1 text-gray-50"
+                                htmlFor="text"
+                                className="md-label text-gray-50"
                             >
                                 Краткое описание
                             </label>
                         </div>
-                        {message.error && (
-                            <p className="text-red-500 text-xs pt-2">
-                                {message.error}
+                        {text.error && (
+                            <p className="text-red-200 text-xs pt-2">
+                                {text.error}
                             </p>
                         )}
                     </div>
                 </div>
-                {showAlert ? (
-                    <div
-                        className={
-                            "text-white px-6 py-4 border-0 rounded relative mb-4 bg-green-500"
-                        }
-                    >
-                        <span className="inline-block align-middle mr-8">
-                            Пароль изменен!
-                        </span>
-                        <button
-                            className="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"
-                            onClick={() => setShowAlert(false)}
-                        >
-                            <span>×</span>
-                        </button>
-                    </div>
-                ) : null}
                 <div className="py-6 w-full">
                     <div className="text-center flex justify-start">
                         <button

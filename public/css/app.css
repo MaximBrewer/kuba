@@ -27955,7 +27955,6 @@ body::-webkit-scrollbar {
 
 .md-input {
   width: 100%;
-  width: 100%;
   outline: none;
 }
 
@@ -27967,7 +27966,7 @@ body::-webkit-scrollbar {
   pointer-events: none;
   transform-origin: top left;
   transform: translate(0, 0) scale(1);
-  transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms, top 200ms cubic-bezier(0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
   top: 50%;
   margin-top: -12px;
 }
@@ -27979,13 +27978,15 @@ body::-webkit-scrollbar {
 
 .md-input:not(:-moz-placeholder-shown) + .md-label {
   --tw-text-opacity: 1;
-  transform: translate(0, -25px) scale(0.95);
+  transform: scale(0.95);
+  top: 0;
   transform-origin: top left;
 }
 
 .md-input:not(:-ms-input-placeholder) + .md-label {
   --tw-text-opacity: 1;
-  transform: translate(0, -25px) scale(0.95);
+  transform: scale(0.95);
+  top: 0;
   transform-origin: top left;
 }
 
@@ -27993,8 +27994,13 @@ body::-webkit-scrollbar {
 .md-input:not(:placeholder-shown) + .md-label,
 .react-select-container + .md-label {
   --tw-text-opacity: 1;
-  transform: translate(0, -25px) scale(0.95);
+  transform: scale(0.95);
+  top: 0;
   transform-origin: top left;
+}
+
+textarea.md-input + .md-label {
+  top: -0.875rem !important;
 }
 
 input[type=radio] + label span {
@@ -28023,6 +28029,12 @@ input[type=checkbox] + label:hover span {
 input[type=checkbox]:checked + label span {
   background-color: #059669;
   box-shadow: 0px 0px 0px 2px white inset;
+}
+
+@media only screen and (min-width: 640px) {
+  #services, .h1-bg-moon {
+    background: none !important;
+  }
 }
 
 @media (min-width: 640px){

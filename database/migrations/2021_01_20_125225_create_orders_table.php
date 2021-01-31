@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompanyTypesTable extends Migration
+class CreateOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateCompanyTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('company_types', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title')->nullable();
+            $table->string('name');
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->text('text')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateCompanyTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_types');
+        Schema::dropIfExists('orders');
     }
 }
