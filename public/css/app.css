@@ -28032,9 +28032,16 @@ input[type=checkbox]:checked + label span {
 }
 
 @media only screen and (min-width: 640px) {
-  #services, .h1-bg-moon {
+  #services,
+.h1-bg-moon {
     background: none !important;
   }
+}
+
+input,
+textarea,
+select {
+  border-radius: 0;
 }
 
 @media (min-width: 640px){
